@@ -20,26 +20,17 @@ services:
       - key: DB_CONNECTION
         value: mysql
       - key: DB_HOST
-        fromDatabase:
-          name: techstore-db
-          property: host
+        value: shuttle.proxy.rlwy.net # ví dụ: containers-us-west-123.railway.app
       - key: DB_PORT
-        value: 3306
+        value: 35550 # ví dụ: 3306 hoặc port Railway cấp
       - key: DB_DATABASE
-        fromDatabase:
-          name: techstore-db
-          property: database
+        value: railway
       - key: DB_USERNAME
-        fromDatabase:
-          name: techstore-db
-          property: user
+        value: root # thường là 'root'
       - key: DB_PASSWORD
-        fromDatabase:
-          name: techstore-db
-          property: password
+        value: pNhcthxIGWjhMOTstNdxzZEmJjhVfUqn
 
-databases:
-  - name: techstore-db
-    region: oregon
-    plan: free
-    mysqlVersion: 8
+ports:
+    - 8000
+
+
