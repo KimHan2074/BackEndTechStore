@@ -23,10 +23,12 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY . /var/www
 
+# Cài thư viện laravel
+RUN composer install --no-dev --optimize-autoloader
+
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 /var/www
 
 EXPOSE 8000
 
 CMD php artisan key:generate && php artisan config:cache && php artisan route:cache && php artisan serve --host=0.0.0.0 --port=8000
-
