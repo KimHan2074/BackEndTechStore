@@ -14,7 +14,7 @@ services:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
-        value: false
+        value: true
       - key: APP_KEY
         generateValue: true
       - key: DB_CONNECTION
@@ -22,7 +22,7 @@ services:
       - key: DB_HOST
         value: shuttle.proxy.rlwy.net # ví dụ: containers-us-west-123.railway.app
       - key: DB_PORT
-        value: 3306 # ví dụ: 3306 hoặc port Railway cấp
+        value: 35550 # ví dụ: 3306 hoặc port Railway cấp
       - key: DB_DATABASE
         value: railway
       - key: DB_USERNAME
