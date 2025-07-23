@@ -15,7 +15,7 @@ services:
     - key: DB_HOST
       value: shuttle.proxy.rlwy.net
     - key: DB_PORT
-      value: 35550  # Ví dụ: 3306 hoặc 35550
+      value: 23324 # Ví dụ: 3306 hoặc 35550
     - key: DB_DATABASE
       value: railway
     - key: DB_USERNAME
