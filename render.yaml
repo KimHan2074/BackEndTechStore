@@ -1,36 +1,66 @@
-services:
+# services:
+#   - type: web
+#     name: techstore-backend
+#     env: docker
+#     region: oregon
+#     plan: free
+#     branch: main
+#     dockerfilePath: ./Dockerfile
+#     autoDeploy: true
+#     startCommand: |
+#       php artisan migrate --force &&
+#       php artisan serve --host=0.0.0.0 --port=8000
+#     envVars:
+#       - key: APP_ENV
+#         value: production
+#       - key: APP_DEBUG
+#         value: true
+#       - key: APP_KEY
+#         generateValue: true
+#       - key: DB_CONNECTION
+#         value: mysql
+#       - key: DB_HOST
+#         value: shuttle.proxy.rlwy.net # ví dụ: containers-us-west-123.railway.app
+#       - key: DB_PORT
+#         value: 35550 # ví dụ: 3306 hoặc port Railway cấp
+#       - key: DB_DATABASE
+#         value: railway
+#       - key: DB_USERNAME
+#         value: root # thường là 'root'
+#       - key: DB_PASSWORD
+#         value: pNhcthxIGWjhMOTstNdxzZEmJjhVfUqn
+
+# ports:
+#     - 8000
+
+
+  services:
   - type: web
-    name: techstore-backend
-    env: docker
-    region: oregon
-    plan: free
-    branch: main
-    dockerfilePath: ./Dockerfile
-    autoDeploy: true
-    startCommand: |
-      php artisan migrate --force &&
-      php artisan serve --host=0.0.0.0 --port=8000
+    name: backendtechstore
+    env: php
+    buildCommand: |
+      composer install --no-dev
+      php artisan config:cache
+      php artisan route:cache
+      php artisan view:cache
+    startCommand: php -S 0.0.0.0:10000 -t public
     envVars:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
-        value: true
-      - key: APP_KEY
-        generateValue: true
+        value: false
       - key: DB_CONNECTION
         value: mysql
       - key: DB_HOST
-        value: shuttle.proxy.rlwy.net # ví dụ: containers-us-west-123.railway.app
+        value: shuttle.proxy.rlwy.net
       - key: DB_PORT
-        value: 35550 # ví dụ: 3306 hoặc port Railway cấp
+        value: 35550  # Ví dụ: 3306 hoặc 35550
       - key: DB_DATABASE
         value: railway
       - key: DB_USERNAME
-        value: root # thường là 'root'
+        value: root
       - key: DB_PASSWORD
         value: pNhcthxIGWjhMOTstNdxzZEmJjhVfUqn
 
-ports:
-    - 8000
 
 
